@@ -527,16 +527,15 @@
 }
 \newcommand{\makecoverpage}{%
   \ifppgcc@showcover\begingroup
-    \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
     \ppgcc@maketitlepage{\z@}
   \endgroup\fi
 }
 \newcommand{\maketitlepage}{%
   \ifppgcc@showtitle
     \ifppgcc@extraporttitlepage\begingroup
-      \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
       \ppgcc@maketitlepage{\@ne}%
     \endgroup\fi
+    \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
     \ppgcc@maketitlepage{\@ne}%
   \fi
 }

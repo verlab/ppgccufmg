@@ -489,10 +489,10 @@
 
   \def\ppgcc@msc{Master}
   \def\ppgcc@phd{Doctor}
-  \def\ppgcc@mscdoc{Dissertation}
-  \def\ppgcc@mscdocprop{Dissertation proposal}
-  \def\ppgcc@phddoc{Thesis}
-  \def\ppgcc@phddocproj{Thesis project}
+  \def\ppgcc@mscdoc{Thesis}
+  \def\ppgcc@mscdocprop{Thesis proposal}
+  \def\ppgcc@phddoc{Dissertation}
+  \def\ppgcc@phddocproj{Dissertation project}
   \def\ppgcc@advisor{Advisor}
   \def\ppgcc@coadvisor{Co-Advisor}
   \def\ppgcc@docdescription{%
@@ -520,7 +520,7 @@
   \def\ppgccbibchapterstring{chapter}
   \def\ppgccbibtechreportstring{Technical report}
   \def\ppgccbibmscstring{Master's thesis}
-  \def\ppgccbibphdstring{PhD thesis}
+  \def\ppgccbibphdstring{PhD dissertation}
 
   \def\ppgcc@appendixname{Appendix}
   \def\ppgcc@attachmentname{Attachment}

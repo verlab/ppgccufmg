@@ -532,11 +532,11 @@
 }
 \newcommand{\maketitlepage}{%
   \ifppgcc@showtitle
+    \ppgcc@maketitlepage{\@ne}%
     \ifppgcc@extraporttitlepage\begingroup
+      \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
       \ppgcc@maketitlepage{\@ne}%
     \endgroup\fi
-    \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
-    \ppgcc@maketitlepage{\@ne}%
   \fi
 }
 

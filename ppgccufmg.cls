@@ -8,8 +8,8 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2004,2005,2006,2007,2008 by Vilar Camara Neto and Eduardo
-%% Nakamura.
+%% Copyright (C) 2004-2020 by Vilar Fiuza da Camara Neto and Eduardo
+%% Freire Nakamura.
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either
@@ -23,21 +23,21 @@
 %% 
 %% Currently this work has the LPPL maintenance status "maintained".
 %% 
-%% The Current Maintainer of this work is Vilar Camara Neto.
+%% The Current Maintainer of this work is Vilar Fiuza da Camara Neto.
 %% 
 %% This work consists of the files ppgccufmg.dtx and
-%% ppgccufmg.ins and the derived file ppgccufmg.cls.
+%% ppgccufmg.ins and the derived files ppgccufmg.cls and
+%% ppgccufmg.bst.
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{ppgccufmg}
-  [2012/09/17 v1.51 Classe para dissertacoes, teses e propostas de tese no
-  formato PPGCC/ICEx/UFMG]
+  [2021/03/29 v1.60 Classe para dissertacoes, teses e propostas de tese no
+  formato PPGCC/UFMG]
 
 
 \RequirePackage{keyval}
 \RequirePackage{setspace}
 \RequirePackage{textpos}
-\RequirePackage{etextools}
 
 \def\ppgcc@classname{ppgccufmg}
 
@@ -62,6 +62,10 @@
 \newif\ifppgcc@putmainmatter       % Chamar automaticamente \mainmatter depois
                                    % das páginas introdutórias?
 \newif\ifppgcc@hasapprovalpages    % Há pelo menos uma Folha de Aprovação?
+\newif\ifppgcc@isadvisorfemale     % Usar gênero feminino para Orientador(a)?
+\newif\ifppgcc@isadvisormale       % Usar gênero masculino para Orientador(a)?
+\newif\ifppgcc@iscoadvisorfemale   % Usar gênero feminino para Coorientador(a)?
+\newif\ifppgcc@iscoadvisormale     % Usar gênero masculino para Coorientador(a)?
 
 \newif\if@selfdoc
 \ifx\ppgcc@selfdoc\undefined\else\@selfdoctrue\fi
@@ -125,8 +129,38 @@
 \let\ppgcc@coadvisorname\empty
 
 \newcommand*{\authorrev}[1]{\gdef\ppgcc@authorrev{#1}}     % Nome rev. do autor
-\newcommand*{\advisor}[1]{\gdef\ppgcc@advisorname{#1}}     % Nome do orientador
-\newcommand*{\coadvisor}[1]{\gdef\ppgcc@coadvisorname{#1}} % Nome do coorientador
+\newcommand*{\advisor}[2][]{%                              % Nome do(a) orientador(a)
+  \begingroup
+    \gdef\ppgcc@advisorname{#2}%
+    \xdef\@ppgcc@tempa{#1}%
+    \def\@ppgcc@tempb{female}\ifx\@ppgcc@tempa\@ppgcc@tempb
+      \global\ppgcc@isadvisorfemaletrue
+      \global\ppgcc@isadvisormalefalse
+    \else\def\@ppgcc@tempb{male}\ifx\@ppgcc@tempa\@ppgcc@tempb
+      \global\ppgcc@isadvisorfemalefalse
+      \global\ppgcc@isadvisormaletrue
+    \else
+      \global\ppgcc@isadvisorfemalefalse
+      \global\ppgcc@isadvisormalefalse
+    \fi\fi
+  \endgroup
+}
+\newcommand*{\coadvisor}[2][]{%                            % Nome cooorientador(a)
+  \begingroup
+    \gdef\ppgcc@coadvisorname{#2}%
+    \xdef\@ppgcc@tempa{#1}%
+    \def\@ppgcc@tempb{female}\ifx\@ppgcc@tempa\@ppgcc@tempb
+      \global\ppgcc@iscoadvisorfemaletrue
+      \global\ppgcc@iscoadvisormalefalse
+    \else\def\@ppgcc@tempb{male}\ifx\@ppgcc@tempa\@ppgcc@tempb
+      \global\ppgcc@iscoadvisorfemalefalse
+      \global\ppgcc@iscoadvisormaletrue
+    \else
+      \global\ppgcc@iscoadvisorfemalefalse
+      \global\ppgcc@iscoadvisormalefalse
+    \fi\fi
+  \endgroup
+}
 \newcommand*{\university}[1]{\gdef\ppgcc@university{#1}}   % Nome da universidade
 \newcommand*{\course}[1]{\gdef\@course{#1}}                % Nome do curso
 \newcommand*{\address}[1]{\gdef\@address{#1}}              % Endereço (cidade/UF)
@@ -195,7 +229,7 @@
 \newcommand{\ppgcc@addapproval}[1]{%
   \expandafter\gdef\expandafter\@ppgcc@approvallist\expandafter{%
     \@ppgcc@approvallist{#1}}%
-  \ppgcc@hasapprovalpagestrue
+  \global\ppgcc@hasapprovalpagestrue
   }
 \newcommand{\ppgcc@doapprovallist}[1]{%
   % Para cada folha de aprovação, define localmente as variáveis
@@ -366,7 +400,25 @@
   \fi
 }
 
-%%%\ppgcc@checkauthorrev\ppgcc@authorrev,,,\@
+\def\ppgcc@advisor{%
+  \ifppgcc@isadvisorfemale
+    \ppgcc@femaleadvisor
+  \else\ifppgcc@isadvisormale
+    \ppgcc@maleadvisor
+  \else
+    \ppgcc@neutraladvisor
+  \fi\fi
+}
+
+\def\ppgcc@coadvisor{%
+  \ifppgcc@iscoadvisorfemale
+    \ppgcc@femalecoadvisor
+  \else\ifppgcc@iscoadvisormale
+    \ppgcc@malecoadvisor
+  \else
+    \ppgcc@neutralcoadvisor
+  \fi\fi
+}
 
 \def\ppgcc@langgroup{\@ifundefined{languagename}{brazil}{\languagename}}
 
@@ -435,8 +487,12 @@
   \def\ppgcc@mscdocprop{Proposta de disserta\c{c}\~{a}o}
   \def\ppgcc@phddoc{Tese}
   \def\ppgcc@phddocproj{Projeto de tese}
-  \def\ppgcc@advisor{Orientador}
-  \def\ppgcc@coadvisor{Coorientador}
+  \def\ppgcc@femaleadvisor{Orientadora}
+  \def\ppgcc@maleadvisor{Orientador}
+  \def\ppgcc@neutraladvisor{Orientador(a)}
+  \def\ppgcc@femalecoadvisor{Coorientadora}
+  \def\ppgcc@malecoadvisor{Coorientador}
+  \def\ppgcc@neutralcoadvisor{Coorientador(a)}
   \def\ppgcc@docdescription{%
     \@documenttype{} apresentad\ppgcc@doctype@gender{} ao Programa de
     P\'{o}s\discretionary{-}{-}{-}Gradua\c{c}\~{a}o em \@deflang@course{} do
@@ -454,7 +510,7 @@
   \def\ppgccbibauthorlastsep{}
   \def\ppgccbibauthorand{\&}
   \def\ppgccciteauthorand{\&}
-  \def\ppgccbibinstring{Em}
+  \def\ppgccbibinstring{In}
   \def\ppgccbibpagestring{p.\@}
   \def\ppgccbibpagesstring{pp.\@}
   \def\ppgccbibeditorstring{editor}
@@ -493,8 +549,12 @@
   \def\ppgcc@mscdocprop{Thesis proposal}
   \def\ppgcc@phddoc{Dissertation}
   \def\ppgcc@phddocproj{Dissertation project}
-  \def\ppgcc@advisor{Advisor}
-  \def\ppgcc@coadvisor{Co-Advisor}
+  \def\ppgcc@femaleadvisor{Advisor}
+  \def\ppgcc@maleadvisor{Advisor}
+  \def\ppgcc@neutraladvisor{Advisor}
+  \def\ppgcc@femalecoadvisor{Co-Advisor}
+  \def\ppgcc@malecoadvisor{Co-Advisor}
+  \def\ppgcc@neutralcoadvisor{Co-Advisor}
   \def\ppgcc@docdescription{%
     \@documenttype{} presented to the Graduate Program in \@course{} of the
     \ppgcc@university{} in partial fulfillment of the requirements for the
@@ -527,16 +587,17 @@
 }
 \newcommand{\makecoverpage}{%
   \ifppgcc@showcover\begingroup
+    \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
     \ppgcc@maketitlepage{\z@}
   \endgroup\fi
 }
 \newcommand{\maketitlepage}{%
   \ifppgcc@showtitle
-    \ppgcc@maketitlepage{\@ne}%
     \ifppgcc@extraporttitlepage\begingroup
       \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
       \ppgcc@maketitlepage{\@ne}%
     \endgroup\fi
+    \ppgcc@maketitlepage{\@ne}%
   \fi
 }
 
@@ -842,7 +903,7 @@
         --- \ppgcc@fcuniversity
         \\[\ppgcc@fc@smallsep]
       & \hspace*{\ppgcc@fc@parindent}%
-        Orientador: \ppgcc@advisorname
+        Orientador(a): \ppgcc@advisorname
         \\[\ppgcc@fc@bigsep]
       & \hspace*{\ppgcc@fc@parindent}%
         \ppgcc@indexkeys
@@ -1181,10 +1242,10 @@
 \define@key{ppgcc}{address}{\address{#1}}
 \define@key{ppgcc}{date}{\date{#1}}
 \define@key{ppgcc}{approval}{\ppgcc@addapproval{#1}}
-\define@key{ppgcc}{epigraphtext}{\epigraphtext#1}
-\define@key{ppgcc}{advisor}{\advisor{#1}}
-\define@key{ppgcc}{coadvisor}{\coadvisor{#1}}
-\define@key{ppgcc}{abstract}{\ppgcc@addabstract#1}
+\define@key{ppgcc}{epigraphtext}{\epigraphtext#1\relax}
+\define@key{ppgcc}{advisor}{\advisor#1\relax}
+\define@key{ppgcc}{coadvisor}{\coadvisor#1\relax}
+\define@key{ppgcc}{abstract}{\ppgcc@addabstract#1\relax}
 \define@key{ppgcc}{dedication}{\ppgcc@adddedication{#1}}
 \define@key{ppgcc}{ack}{\ppgcc@addack#1\relax}
 \define@key{ppgcc}{beforetoc}{\ppgcc@addbeforetoc{#1}}

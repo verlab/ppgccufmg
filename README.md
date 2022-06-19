@@ -3,7 +3,7 @@
 
 [![](https://www.verlab.dcc.ufmg.br/wp-content/uploads/2019/05/SVG_Verlab_210x86dpi.png)](https://www.verlab.dcc.ufmg.br)
 
-## Existe uma versão aparentemente atualizada pela comunidade em https://github.com/discentesppgcc/template-latex
+## Existe uma versão aparentemente atualizada pela comunidade em [https://github.com/discentesppgcc/ppgccufmg](https://github.com/discentesppgcc/ppgccufmg)
 
 Este repositorio contém os arquivos de classe (`ppgccufmg.cls`) e de estilo de bibliografia (`ppgccufmg.bst`) para os sistemas LaTeX e BibTeX. Estes arquivos correspondem ao formato oficial regulamentado pelo Programa de Pós-Graduação em Ciência da Computação da Universidade Federal de Minas Gerais (PPGCC/UFMG).
 

@@ -41,31 +41,31 @@
 
 \def\ppgcc@classname{ppgccufmg}
 
-%% OpÁıes gerais:
+%% Op√ß√µes gerais:
 
 \newif\ifppgcc@phd                 % Tese de doutorado?
-\newif\ifppgcc@msc                 % DissertaÁ„o de mestrado?
-\newif\ifppgcc@proposal            % OpÁ„o de proposta/projeto?
+\newif\ifppgcc@msc                 % Disserta√ß√£o de mestrado?
+\newif\ifppgcc@proposal            % Op√ß√£o de proposta/projeto?
 \newif\ifppgcc@showcover           % Compor a falsa folha de rosto?
 \newif\ifppgcc@showtitle           % Compor a folha de rosto?
-\newif\ifppgcc@showfc              % Compor a Ficha Catalogr·fica?
-\newif\ifppgcc@showapproval        % Incluir a Folha de AprovaÁ„o?
-\newif\ifppgcc@showabstract        % Compor as p·ginas de resumo/abstract?
-\newif\ifppgcc@showdedication      % Compor a dedicatÛria?
+\newif\ifppgcc@showfc              % Compor a Ficha Catalogr√°fica?
+\newif\ifppgcc@showapproval        % Incluir a Folha de Aprova√ß√£o?
+\newif\ifppgcc@showabstract        % Compor as p√°ginas de resumo/abstract?
+\newif\ifppgcc@showdedication      % Compor a dedicat√≥ria?
 \newif\ifppgcc@showack             % Compor os agradecimentos?
-\newif\ifppgcc@showepigraph        % Compor a EpÌgrafe?
+\newif\ifppgcc@showepigraph        % Compor a Ep√≠grafe?
 \newif\ifppgcc@showlof             % Compor a Lista de Figuras?
 \newif\ifppgcc@showlot             % Compor a Lista de Tabelas?
-\newif\ifppgcc@showtoc             % Compor o Sum·rio?
-\newif\ifppgcc@extraporttitlepage  % Exibir tambÈm uma folha de tÌtulo
-                                   % em portuguÍs?
+\newif\ifppgcc@showtoc             % Compor o Sum√°rio?
+\newif\ifppgcc@extraporttitlepage  % Exibir tamb√©m uma folha de t√≠tulo
+                                   % em portugu√™s?
 \newif\ifppgcc@putmainmatter       % Chamar automaticamente \mainmatter depois
-                                   % das p·ginas introdutÛrias?
-\newif\ifppgcc@hasapprovalpages    % H· pelo menos uma Folha de AprovaÁ„o?
-\newif\ifppgcc@isadvisorfemale     % Usar gÍnero feminino para Orientador(a)?
-\newif\ifppgcc@isadvisormale       % Usar gÍnero masculino para Orientador(a)?
-\newif\ifppgcc@iscoadvisorfemale   % Usar gÍnero feminino para Coorientador(a)?
-\newif\ifppgcc@iscoadvisormale     % Usar gÍnero masculino para Coorientador(a)?
+                                   % das p√°ginas introdut√≥rias?
+\newif\ifppgcc@hasapprovalpages    % H√° pelo menos uma Folha de Aprova√ß√£o?
+\newif\ifppgcc@isadvisorfemale     % Usar g√™nero feminino para Orientador(a)?
+\newif\ifppgcc@isadvisormale       % Usar g√™nero masculino para Orientador(a)?
+\newif\ifppgcc@iscoadvisorfemale   % Usar g√™nero feminino para Coorientador(a)?
+\newif\ifppgcc@iscoadvisormale     % Usar g√™nero masculino para Coorientador(a)?
 
 \newif\if@selfdoc
 \ifx\ppgcc@selfdoc\undefined\else\@selfdoctrue\fi
@@ -99,15 +99,29 @@
   \ppgcc@showtocfalse
 }
 
+\def\ppgcc@onlyhidefcapproval{%
+  \ppgcc@showcovertrue
+	\ppgcc@showtitletrue
+	\ppgcc@showfcfalse
+	\ppgcc@showapprovalfalse
+	\ppgcc@showabstracttrue
+	\ppgcc@showdedicationtrue
+	\ppgcc@showacktrue
+	\ppgcc@showepigraphtrue
+	\ppgcc@showloftrue
+	\ppgcc@showlottrue
+	\ppgcc@showtoctrue
+}
+
 \ppgcc@proposalfalse
 \ppgcc@showall
 \ppgcc@putmainmattertrue
 \ppgcc@hasapprovalpagesfalse
 
-%% OpÁıes das referÍncias bibliogr·ficas:
+%% Op√ß√µes das refer√™ncias bibliogr√°ficas:
 
 \newif\if@bibnorepauthor  % Substituir autorias repetidas por linha comprida?
-\newif\if@nobreakitems    % Impedir quebra de p·gina no meio de um item?
+\newif\if@nobreakitems    % Impedir quebra de p√°gina no meio de um item?
 
 \@bibnorepauthorfalse
 \@nobreakitemsfalse
@@ -163,12 +177,13 @@
 }
 \newcommand*{\university}[1]{\gdef\ppgcc@university{#1}}   % Nome da universidade
 \newcommand*{\course}[1]{\gdef\@course{#1}}                % Nome do curso
-\newcommand*{\address}[1]{\gdef\@address{#1}}              % EndereÁo (cidade/UF)
+\newcommand*{\address}[1]{\gdef\@address{#1}}              % Endere√ßo (cidade/UF)
 \newcommand*{\fcuniversity}[1]                             % Nome da universidade
   {\gdef\ppgcc@fcuniversity{#1}}                           % para a F.C.
-\newcommand*{\cutter}[1]{\gdef\ppgcc@cutter{#1}}           % CÛdigo "cutter"
-\newcommand*{\cdu}[1]{\gdef\ppgcc@cdu{#1}}                 % CÛdigo CDU
-\newcommand*{\indexkeys}[1]{\gdef\ppgcc@indexkeys{#1}}     % Chaves para indexaÁ„o
+\newcommand*{\cutter}[1]{\gdef\ppgcc@cutter{#1}}           % C√≥digo "cutter"
+\newcommand*{\cdu}[1]{\gdef\ppgcc@cdu{#1}}                 % C√≥digo CDU
+\newcommand*{\indexkeys}[1]{\gdef\ppgcc@indexkeys{#1}}     % Chaves para indexa√ß√£o
+\newcommand*{\fcpage}[1]{\gdef\ppgcc@fcpage{#1}}           % Ficha catalografica
 
 \indexkeys{\ppgccexpandlistoffckeywords{} \ppgccexpandlistoffcpostkeywords}
 
@@ -178,11 +193,11 @@
 \renewcommand{\date}[1]{%                                  % Data (aaaa-mm ou aaaa-mm-dd)
   \ppgcc@origdatecmd{#1}\ppgcc@parsedate#1---\relax}
 
-\newcommand*{\coursedegree}[1]{\gdef\@degree{#1}}          % TitulaÁ„o
-\renewcommand*{\title}[1]                                  % TÌtulo
+\newcommand*{\coursedegree}[1]{\gdef\@degree{#1}}          % Titula√ß√£o
+\renewcommand*{\title}[1]                                  % T√≠tulo
   {\gdef\@title{#1}}
 
-\newcommand*{\portuguesetitle}[1]                          % TÌtulo em portuguÍs
+\newcommand*{\portuguesetitle}[1]                          % T√≠tulo em portugu√™s
   {\gdef\@portuguesetitle{#1}}
 \newcommand*{\portugueseuniversity}[1]                     % Nome da univers. em pt.
   {\gdef\@portugueseuniversity{#1}}
@@ -232,7 +247,7 @@
   \global\ppgcc@hasapprovalpagestrue
   }
 \newcommand{\ppgcc@doapprovallist}[1]{%
-  % Para cada folha de aprovaÁ„o, define localmente as vari·veis
+  % Para cada folha de aprova√ß√£o, define localmente as vari√°veis
   % \ppgcc@approvalvertadjust, \ppgcc@approvalwidth e \ppgcc@approval e em
   % seguida chama o comando #1.
   \begingroup
@@ -277,6 +292,8 @@
 \DeclareOption{single}{\renewcommand{\ppgcc@defspacing}{\singlespace}}
 \DeclareOption{onehalf}{\renewcommand{\ppgcc@defspacing}{\onehalfspace}}
 \DeclareOption{double}{\renewcommand{\ppgcc@defspacing}{\doublespace}}
+
+\DeclareOption{onlyhidefcapproval}{\ppgcc@onlyhidefcapproval}
 
 \DeclareOption{hideall}{\ppgcc@hideall}
 \DeclareOption{hidecover}{\ppgcc@showcoverfalse}
@@ -330,7 +347,7 @@
 
 \def\ppgcc@setdoctype{%
   \ifppgcc@phd
-    % Esta È uma tese de doutorado
+    % Esta √© uma tese de doutorado
     \coursedegree{\ppgcc@phd}
     \ifppgcc@proposal
       \gdef\@documenttype{\ppgcc@phddocproj}%
@@ -340,7 +357,7 @@
       \ppgcc@set@phddoc
     \fi
   \else
-    % Esta È uma dissertaÁ„o de mestrado
+    % Esta √© uma disserta√ß√£o de mestrado
     \coursedegree{\ppgcc@msc}
     \ifppgcc@proposal
       \gdef\@documenttype{\ppgcc@mscdocprop}%
@@ -439,7 +456,12 @@
   \begingroup
     \def\ppgcc@templang{#1}%
     \ifx\ppgcc@templang\empty\let\ppgcc@templang\ppgcc@langgroup\fi
-    \@ifundefined{ppgcc@year}{??}{\csname ppgcc@expanddate@\ppgcc@templang\endcsname}%
+    
+    % show month and year
+    %\@ifundefined{ppgcc@year}{??}{\csname ppgcc@expanddate@\ppgcc@templang\endcsname}%
+    
+    % show only year
+    \@ifundefined{ppgcc@year}{??}{\ppgcc@year}%
   \endgroup
 }
 \def\ppgcc@parsedate#1-#2-#3-#4\relax{%
@@ -481,6 +503,7 @@
   \def\@deflang@course{%
     \@ifundefined{@portuguesecourse}{\@course}{\@portuguesecourse}}
 
+  \def\ppgcc@finalversion{Vers√£o Final}
   \def\ppgcc@msc{Mestre}
   \def\ppgcc@phd{Doutor}
   \def\ppgcc@mscdoc{Disserta\c{c}\~{a}o}
@@ -495,9 +518,9 @@
   \def\ppgcc@neutralcoadvisor{Coorientador(a)}
   \def\ppgcc@docdescription{%
     \@documenttype{} apresentad\ppgcc@doctype@gender{} ao Programa de
-    P\'{o}s\discretionary{-}{-}{-}Gradua\c{c}\~{a}o em \@deflang@course{} do
-    Instituto de Ci\^{e}ncias Exatas da \@deflang@university{} como requisito
-    parcial para a obten\c{c}\~{a}o do grau de \@degree{} em \@deflang@course.}
+    P\'{o}s\discretionary{-}{-}{-}Gradua\c{c}\~{a}o em \@deflang@course{} 
+    da \@deflang@university{}, como requisito
+    parcial \`a obten\c{c}\~{a}o do t\'itulo de \@degree{} em \@deflang@course.}
   \def\ppgcc@acknowledgments{Agradecimentos}
   \def\ppgcc@keywordsname{Palavras-chave}
 
@@ -543,6 +566,7 @@
   \def\@deflang@university{\ppgcc@university}
   \def\@deflang@course{\@course}
 
+  \def\ppgcc@finalversion{Final version}
   \def\ppgcc@msc{Master}
   \def\ppgcc@phd{Doctor}
   \def\ppgcc@mscdoc{Thesis}
@@ -588,16 +612,17 @@
 \newcommand{\makecoverpage}{%
   \ifppgcc@showcover\begingroup
     \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
-    \ppgcc@maketitlepage{\z@}
+    %\ppgcc@maketitlepage{\z@}
+    \ppgcc@makecoverpage{\z@}
   \endgroup\fi
 }
 \newcommand{\maketitlepage}{%
   \ifppgcc@showtitle
+    \ppgcc@maketitlepage{\@ne}%
     \ifppgcc@extraporttitlepage\begingroup
       \ppgcc@deflanguage{brazil}\ppgcc@selectlanguage
       \ppgcc@maketitlepage{\@ne}%
     \endgroup\fi
-    \ppgcc@maketitlepage{\@ne}%
   \fi
 }
 
@@ -609,117 +634,188 @@
   \end{minipage}%
 }
 
-\def\ppgcc@titpag@fmtauthor#1{\large\BreakableUppercase{#1}}
+\def\ppgcc@titpag@fmtauthor#1{#1}
 \def\ppgcc@titpag@fmtadvisor{\large\scshape}
 \let\ppgcc@titpag@fmtcoadvisor\ppgcc@titpag@fmtadvisor
 \def\ppgcc@titpag@fmttitle#1{\Large\bfseries\BreakableUppercase{#1}}
 \def\ppgcc@titpag@fmtaddress{\large}
 \def\ppgcc@titpag@fmtdate{\large}
 
-
 \newenvironment{ppgcctitlingpageany}%
   {%
     \clearpage
-    \thispagestyle{titlingpage}%
+    \thispagestyle{chapter}%
   }{%
-    \thispagestyle{titlingpage}%
+    \thispagestyle{chapter}%
     \clearpage
   }
 
 \newenvironment{ppgcctitlingpageodd}%
   {%
-    \cleardoublepage
-    \thispagestyle{titlingpage}%
+    \clearpage
+    \thispagestyle{chapter}%
   }{%
-    \thispagestyle{titlingpage}%
+    \thispagestyle{chapter}%
     \clearpage
   }
 
 \def\ppgcc@maketitlepageoptionalpart{%
   \ppgcc@makedocdescription\par
   \vspace{1.5cm}%
-  {\ppgcc@titpag@fmtadvisor{\ppgcc@advisor: \ppgcc@advisorname}\par}%
-  \ifx\ppgcc@coadvisorname\empty\else
-    {\ppgcc@titpag@fmtcoadvisor{\ppgcc@coadvisor: \ppgcc@coadvisorname}\par}%
-  \fi
+%  {\ppgcc@titpag@fmtadvisor{\ppgcc@advisor: \ppgcc@advisorname}\par}%
+%  \ifx\ppgcc@coadvisorname\empty\else
+%    {\ppgcc@titpag@fmtcoadvisor{\ppgcc@coadvisor: \ppgcc@coadvisorname}\par}%
+%  \fi
+}
+
+\def\ppgcc@makecoverpage#1{%
+\ppgcc@checkauthor
+\begin{ppgcctitlingpageodd}
+	\thispagestyle{empty}
+	\begin{singlespace}
+		{\centering
+			\vbox to3\baselineskip{%
+				\textbf{UNIVERSIDADE FEDERAL DE MINAS GERAIS}
+				
+				\textbf{Instituto de Ci√™ncias Exatas}
+				
+				\textbf{Programa de P√≥s-Gradua√ß√£o em Ci√™ncia da Computa√ß√£o}
+			}
+			\vspace{\stretch{1}}
+			
+			%{\ppgcc@titpag@fmtauthor{\@author}\par}%
+			{\@author}
+			
+			\vspace{\stretch{1}}
+			% \setbox0=\vbox{\ppgcc@maketitlepageoptionalpart}%
+			% \edef\ppgcc@textvspace{%
+			%   \noexpand\vrule
+			%   height\the\ht0
+			%   depth\the\dp0
+			%   width0pt\noexpand\par}
+			% \ppgcc@textvspace
+			% \vspace{\stretch{3}}
+			% \if@selfdoc
+			%   \setbox0=\vbox{%
+			% \fi
+			% J√∫lio
+			%{\DoubleSpacing\ppgcc@titpag@fmttitle{\@deflang@title}\par}%
+			{\textbf{\@title}}
+			% \if@selfdoc
+			%   }%
+			%   \begin{tikzpicture}[overlay,remember picture]
+			%     \node (tltitle) at (0,\ht0) {};
+			%     \node (brtitle) at (\wd0,-\dp0) {};
+			%   \end{tikzpicture}\box0
+			% \fi
+			% \vspace{1.5cm}
+			% \ppgcc@textvspace
+			
+			\vspace{\stretch{2}}
+			\vbox to3\baselineskip{%
+				\vfil
+				%{\ppgcc@titpag@fmtaddress{\@address}\par}%
+				{\@address}
+				
+				\medskip
+				%{\ppgcc@titpag@fmtdate{\ppgcc@formatdate\par}}%
+				
+				{\ppgcc@formatdate}
+			}\par
+		}
+		\if@selfdoc\global\let\ppgcc@selfdoc@fg\ppgcc@selfdoc@drawtitlepage\fi
+	\end{singlespace}
+\end{ppgcctitlingpageodd}
 }
 
 \def\ppgcc@maketitlepage#1{%
   \ppgcc@checkauthor
-  \begin{ppgcctitlingpageodd}
+  %\begin{ppgcctitlingpageodd}
+  \thispagestyle{empty}
   \begin{singlespace}
   {\centering
     \vbox to3\baselineskip{%
       \ifx#1\z@
       \else
-        {\ppgcc@titpag@fmtauthor{\@author}\par}%
+        {\@author}
         \vfil
       \fi
     }
 
+    \vspace{\stretch{2}}
+
+%    \setbox0=\vbox{\ppgcc@maketitlepageoptionalpart}%
+%    \edef\ppgcc@textvspace{%
+%      \noexpand\vrule
+%      height\the\ht0
+%      depth\the\dp0
+%      width0pt\noexpand\par}
+%    \ppgcc@textvspace
+%
+%    \vspace{1.5cm}
+%
+%    \if@selfdoc
+%      \setbox0=\vbox{%
+%    \fi
+%    {\DoubleSpacing\ppgcc@titpag@fmttitle{\@deflang@title}\par}%
+%    \if@selfdoc
+%      }%
+%      \begin{tikzpicture}[overlay,remember picture]
+%        \node (tltitle) at (0,\ht0) {};
+%        \node (brtitle) at (\wd0,-\dp0) {};
+%      \end{tikzpicture}\box0
+%    \fi
+	{\textbf{\@deflang@title}}
+
+	\vspace{\stretch{1}}
+    \hspace*{\stretch{1}}%
+    \begin{minipage}{\ppgcc@docdescriptionwidth}
+    	\textbf{\ppgcc@finalversion}
+    \end{minipage}%
     \vspace{\stretch{1}}
-
-    \setbox0=\vbox{\ppgcc@maketitlepageoptionalpart}%
-    \edef\ppgcc@textvspace{%
-      \noexpand\vrule
-      height\the\ht0
-      depth\the\dp0
-      width0pt\noexpand\par}
-    \ppgcc@textvspace
-
-    \vspace{1.5cm}
-
-    \if@selfdoc
-      \setbox0=\vbox{%
-    \fi
-    {\DoubleSpacing\ppgcc@titpag@fmttitle{\@deflang@title}\par}%
-    \if@selfdoc
-      }%
-      \begin{tikzpicture}[overlay,remember picture]
-        \node (tltitle) at (0,\ht0) {};
-        \node (brtitle) at (\wd0,-\dp0) {};
-      \end{tikzpicture}\box0
-    \fi
-
-    \vspace{1.5cm}
 
     \ifx#1\z@
       \ppgcc@textvspace
     \else
       \hspace*{\stretch{1}}%
-      \if@selfdoc
-        \setbox0=\hbox{%
-      \fi
+%      \if@selfdoc
+%        \setbox0=\hbox{%
+%      \fi
       \ppgcc@makedocdescription
-      \if@selfdoc
-        }%
-        \begin{tikzpicture}[overlay,remember picture]
-          \node (tldescr) at (0,\ht0) {};
-          \node (brdescr) at (\wd0,-\dp0) {};
-          \node (trdescr) at (tldescr -| brdescr) {};
-          \node (bldescr) at (tldescr |- brdescr) {};
-          %\draw [area] (trdescr) -- (tldescr) -- (bldescr) -- (brdescr);
-          \draw [area] (trdescr) -- (tldescr -| left);
-          \draw [area] (brdescr) -- (bldescr -| left);
-          \draw [area] (tldescr) -- (bldescr);
-          \node (bseparrow) at ([xshift=-1cm] tldescr) {};
-          \draw [marrow] (bseparrow.center)
-            -- node [left] {1,5cm} (bseparrow |- brtitle);
-          \draw [marrow] (bldescr) ++(0,-.5cm)
-            -- node [below] {Metade da largura}
-            ($(brdescr) +(0,-.5cm)$);
-          \draw [marrow] (bldescr) ++(-1cm,0)
-            -- node [left] {1,5cm} ++(0,-1.5cm);
-        \end{tikzpicture}%
-        \box0\relax
-      \fi
+%      \if@selfdoc
+%        }%
+%        \begin{tikzpicture}[overlay,remember picture]
+%          \node (tldescr) at (0,\ht0) {};
+%          \node (brdescr) at (\wd0,-\dp0) {};
+%          \node (trdescr) at (tldescr -| brdescr) {};
+%          \node (bldescr) at (tldescr |- brdescr) {};
+%          %\draw [area] (trdescr) -- (tldescr) -- (bldescr) -- (brdescr);
+%          \draw [area] (trdescr) -- (tldescr -| left);
+%          \draw [area] (brdescr) -- (bldescr -| left);
+%          \draw [area] (tldescr) -- (bldescr);
+%          \node (bseparrow) at ([xshift=-1cm] tldescr) {};
+%          \draw [marrow] (bseparrow.center)
+%            -- node [left] {1,5cm} (bseparrow |- brtitle);
+%          \draw [marrow] (bldescr) ++(0,-.5cm)
+%            -- node [below] {Metade da largura}
+%            ($(brdescr) +(0,-.5cm)$);
+%          \draw [marrow] (bldescr) ++(-1cm,0)
+%            -- node [left] {1,5cm} ++(0,-1.5cm);
+%        \end{tikzpicture}%
+%        \box0\relax
+%      \fi
 
-      \vspace{1.5cm}
+      \vspace{1cm}
 
-      {\ppgcc@titpag@fmtadvisor{\ppgcc@advisor: \ppgcc@advisorname}\par}%
-      \ifx\ppgcc@coadvisorname\empty\else
-        {\ppgcc@titpag@fmtcoadvisor{\ppgcc@coadvisor: \ppgcc@coadvisorname}\par}%
-      \fi
+      %{\ppgcc@titpag@fmtadvisor{\ppgcc@advisor: \ppgcc@advisorname}\par}%
+      \hspace*{\stretch{1}}%
+		\begin{minipage}{\ppgcc@docdescriptionwidth}
+			{\ppgcc@advisor: \ppgcc@advisorname}
+			\ifx\ppgcc@coadvisorname\empty\else
+				\\
+				{\ppgcc@coadvisor: \ppgcc@coadvisorname}%
+			\fi
+		\end{minipage}%
     \fi
 
     \vspace{\stretch{1}}
@@ -728,15 +824,18 @@
       \ifx#1\z@
       \else
         \vfil
-        {\ppgcc@titpag@fmtaddress{\@address}\par}%
+        %{\ppgcc@titpag@fmtaddress{\@address}\par}%
+        {\@address}
         \medskip
-        {\ppgcc@titpag@fmtdate{\ppgcc@formatdate\par}}%
+        %{\ppgcc@titpag@fmtdate{\ppgcc@formatdate\par}}%
+        {\ppgcc@formatdate\par}
       \fi
     }\par
   }
   \if@selfdoc\global\let\ppgcc@selfdoc@fg\ppgcc@selfdoc@drawtitlepage\fi
   \end{singlespace}
-  \end{ppgcctitlingpageodd}
+  %\end{ppgcctitlingpageodd}
+  \clearpage
 }
 
 \newif\if@fc@ilhookcalled\@fc@ilhookcalledfalse
@@ -788,7 +887,7 @@
   \immediate\write\@auxout{%
     \string\setcounter{ppgcc@fc@frontpages}{\the\c@ppgcc@fc@frontpages}^^J
   }%
-  \ppgcc@mainmatter
+  \ppgcc@mainmatter*
 }
 
 \def\ppgcc@fc@checkerr#1#2#3{%
@@ -815,8 +914,8 @@
 \def\ppgcc@fc@check{%
   \ppgcc@fc@checkparamerr{ppgcc@authorrev}{o nome reverso do autor}{authorrev}
     {\authorrev}
-  \ppgcc@fc@checkparamwarn{ppgcc@cutter}{o cÛdigo ``cutter''}{cutter}{\cutter}
-  \ppgcc@fc@checkparamwarn{ppgcc@cdu}{o cÛdigo CDU}{cdu}{\cdu}
+  \ppgcc@fc@checkparamwarn{ppgcc@cutter}{o c√≥digo ``cutter''}{cutter}{\cutter}
+  \ppgcc@fc@checkparamwarn{ppgcc@cdu}{o c√≥digo CDU}{cdu}{\cdu}
 }
 
 \def\ppgcc@titlenobreak{%
@@ -853,80 +952,44 @@
 }
 
 \def\ppgcc@makefc{%
-  \begin{ppgcctitlingpageany}%
-  \begin{singlespace}%
-
-  \ppgcc@checkauthor
-  \ppgcc@fc@calc
-
-  \hyphenpenalty=10000
-  \flushbottom
-
-  \noindent
-  \begin{tabular}{@{}ll@{}}
-    \copyright & \ppgcc@year, \@author. \\
-    & Todos os direitos reservados.
-  \end{tabular}
-
-  \leavevmode\vfill
-
-  \fboxsep=\ppgcc@fc@sep
-  \fboxrule=\ppgcc@fc@rule
-  \centering\noindent
-  \if@selfdoc
-    \setbox0=\hbox{%
-  \fi
-  \fbox{%
-  \begin{minipage}{\ppgcc@l@fc@width}
-    \begin{tabular}%
-      {@{}p{\ppgcc@l@fc@firstcolwidth}%
-      @{\hspace{\ppgcc@fc@realcolsep}}%
-      >{\raggedright\arraybackslash}%
-      p{\ppgcc@l@fc@seccolwidth}@{}}
-      & \ppgcc@authorrev
-        \\[\ppgcc@fc@bigsep]
-      \@ifundefined{ppgcc@cutter}{}{\ppgcc@cutter}%
-      & \hspace*{\ppgcc@fc@parindent}%
-        \ppgcc@titlenobreak{} / \@author.\space --- \@address, \ppgcc@year
-        \\[\ppgcc@fc@smallsep]
-      & \hspace*{\ppgcc@fc@parindent}%
-        \roman{ppgcc@fc@frontpages}, \arabic{lastpage} f.~%
-        \if@fc@hasil : il.~\fi
-        ; 29cm
-        \\[\ppgcc@fc@bigsep]
-      & \hspace*{\ppgcc@fc@parindent}%
-        \ifppgcc@phd
-          Tese (doutorado)
-        \else
-          Disserta\c{c}\~{a}o (mestrado)
-        \fi
-        --- \ppgcc@fcuniversity
-        \\[\ppgcc@fc@smallsep]
-      & \hspace*{\ppgcc@fc@parindent}%
-        Orientador(a): \ppgcc@advisorname
-        \\[\ppgcc@fc@bigsep]
-      & \hspace*{\ppgcc@fc@parindent}%
-        \ppgcc@indexkeys
-    \end{tabular}
-    \@ifundefined{ppgcc@cdu}{}{%
-      \vspace{\ppgcc@fc@bigsep}\par
-      {\centering
-        CDU \ppgcc@cdu
-      \par}%
-    }%
-  \end{minipage}}%
-  \if@selfdoc
-    }\begingroup
-      \edef\@ht{\the\ht0}\edef\@dp{\the\dp0}%
-      \box0\relax
-      \ppgcc@selfdoc@begin
-      \ppgcc@selfdoc@drawfc
-      \ppgcc@selfdoc@end
-    \endgroup
-  \fi
-  \end{singlespace}
-  \end{ppgcctitlingpageany}
-  \clearpage
+	\ifppgcc@showapproval
+	%\begin{ppgcctitlingpageodd}
+		\thispagestyle{empty}
+		\begin{singlespace}
+			\@ifundefined{ppgcc@fcpage}{%
+				\leavevmode\vfil
+				{\centering
+					{\huge [Ficha Catalogr\'afica]\par}
+					\bigskip
+					Quando a biblioteca do Curso fornecer esta ficha,\par
+					ela deve ser digitalizada e armazenada no disco em formato
+					gr\'afico.\par
+					\medskip
+					Se voc\^e estiver usando o \texttt{pdflatex},\par
+					armazene o arquivo preferencialmente em formato PNG\par
+					(o formato JPEG \'e pior neste caso).\par
+					\medskip
+					Se voc\^e estiver usando o \texttt{latex} (n\~ao o
+					\texttt{pdflatex}),\par
+					ter\'a que converter o arquivo gr\'afico para o formato EPS.\par
+					\medskip
+					Em seguida, acrescente a op\c{c}\~ao
+					\texttt{fcpage=\{}\emph{nome do arquivo}\texttt{\}}\par
+					ao comando \texttt{\textbackslash ppgccufmg}.\par
+					\medskip
+				}
+			}{%
+				\thispagestyle{titlingpage}%
+				\setlength{\TPHorizModule}{\textwidth}%
+				\begin{textblock}{1}(0,0)%
+					\noindent\includegraphics[width=\textwidth]{\ppgcc@fcpage}\par
+				\end{textblock}%
+				\clearpage
+			}
+		\end{singlespace}
+	%\end{ppgcctitlingpageodd}
+	\clearpage
+	\fi
 }
 
 \newcommand{\makefc}{%
@@ -935,7 +998,8 @@
 
 \newcommand{\makeapproval}{%
   \ifppgcc@showapproval
-    \begin{ppgcctitlingpageodd}
+  	\thispagestyle{empty}
+    %\begin{ppgcctitlingpageodd}
     \begin{singlespace}
 
     \ifppgcc@hasapprovalpages
@@ -973,7 +1037,7 @@
         Se a imagem da folha de aprova\c{c}\~ao precisar ser ajustada, use:\par
         \texttt{approval=[}\emph{ajuste}\texttt{][}\emph{escala}\texttt{]\{}%
         \emph{nome do arquivo}\texttt{\}}\par
-        onde \emph{ajuste} È uma dist\^ancia para deslocar a imagem para baixo\par
+        onde \emph{ajuste} √© uma dist\^ancia para deslocar a imagem para baixo\par
         e \emph{escala} \'e um fator de escala para a imagem. Por exemplo:\par
         \texttt{approval=[-2cm][0.9]\{}\emph{nome do arquivo}\texttt{\}}\par
         desloca a imagem 2cm para cima e a escala em 90\%.\par
@@ -981,7 +1045,8 @@
     \fi
 
     \end{singlespace}
-    \end{ppgcctitlingpageodd}
+    %\end{ppgcctitlingpageodd}
+    \clearpage
   \fi
 }
 
@@ -994,7 +1059,7 @@
         \ppgcc@deflanguage{#1}\ppgcc@selectlanguage
       \fi
       \ppgcc@redefchaptitlefont
-      \chapter{#2}
+      \chapter*{#2}
       \input{#3}
     \endgroup
     \clearpage
@@ -1060,9 +1125,14 @@
 \newcommand{\includededication}[1]{%
   \ifppgcc@showdedication
     \cleardoublepage
+    \thispagestyle{empty}
     \vspace*{\stretch{1}}
-    \textit{\input{#1}}
-    \vspace*{\stretch{1}}
+	\hspace*{\stretch{1}}%
+	\begin{minipage}{\ppgcc@docdescriptionwidth}
+		\input{#1}
+	\end{minipage}%
+%    \textit{\input{#1}}
+%    \vspace*{\stretch{1}}
     \clearpage
   \fi
 }
@@ -1072,7 +1142,7 @@
     \edef\ppgcc@tempack{#1}%
     \ifx\ppgcc@tempack\empty\let\ppgcc@tempack\ppgcc@acknowledgments\fi
     \ppgcc@redefchaptitlefont
-    \chapter{\ppgcc@tempack}
+    \chapter*{\ppgcc@tempack}
     \input{#2}
     \clearpage
   \fi
@@ -1094,6 +1164,7 @@
 }
 \newcommand{\ppgcc@includeacklist}{%
   \ifppgcc@showack
+  	\thispagestyle{empty}
     \setcounter{ppgcc@c@ack}{1}
     \loop
     \expandafter\ifx\csname ppgcc@ack@\theppgcc@c@ack filename\endcsname\relax
@@ -1114,6 +1185,7 @@
   \ifppgcc@showepigraph
     \@ifundefined{ppgcc@epigraphtext}{}{%
       \cleardoublepage
+      \thispagestyle{empty}
       \vspace*{\stretch{1}}
       \begingroup
         \raggedleft
@@ -1126,33 +1198,55 @@
   \fi
 }
 
-\if@twoside
-  \makeheadrule{headings}{\textwidth}{0pt}
-  \makeoddhead{headings}{\textsc{\rightmark}}{}{\thepage}
-  \makeevenhead{headings}{\thepage}{}{\textsc{\leftmark}}
+%\if@twoside
+%  \makeheadrule{headings}{\textwidth}{0pt}
+%  \makeoddhead{headings}{\textsc{\rightmark}}{}{\thepage}
+%  \makeevenhead{headings}{\thepage}{}{\textsc{\leftmark}}
+%
+%  \copypagestyle{contents}{plain}
+%
+%  \copypagestyle{listoffigures}{plain}
+%
+%  \copypagestyle{listoftables}{plain}
+%
+%  \copypagestyle{bibliography}{headings}
+%  \makeoddhead{bibliography}{\textsc{\bibname}}{}{\thepage}
+%  \makeevenhead{bibliography}{\thepage}{}{\textsc{\bibname}}
+%\else
 
-  \copypagestyle{contents}{plain}
-
-  \copypagestyle{listoffigures}{plain}
-
-  \copypagestyle{listoftables}{plain}
-
-  \copypagestyle{bibliography}{headings}
-  \makeoddhead{bibliography}{\textsc{\bibname}}{}{\thepage}
-  \makeevenhead{bibliography}{\thepage}{}{\textsc{\bibname}}
-\else
-  \makeheadrule{headings}{\textwidth}{0pt}
-  \makeoddhead{headings}{\textsc{\leftmark}}{}{\thepage}
-
-  \copypagestyle{contents}{plain}
-
-  \copypagestyle{listoffigures}{plain}
-
-  \copypagestyle{listoftables}{plain}
-
-  \copypagestyle{bibliography}{headings}
-  \makeoddhead{bibliography}{\textsc{\bibname}}{}{\thepage}
-\fi
+  	\makeheadrule{headings}{\textwidth}{0pt}
+	% Julio: retirei os nomes de capitulos/se√ß√µes que apareciam na linha da p√°gina.
+	%\makeoddhead{headings}{\textsc{\leftmark}}{}{\thepage}
+	%\makeoddhead{headings}{}{}{\thepage}
+	%\makeoddhead{headings}{\textsc{\leftmark}}{}{\thepage}
+	% Julio
+	% \copypagestyle{contents}{plain}
+	\copypagestyle{contents}{empty}
+	%\copypagestyle{listoffigures}{plain}
+	% Julio:
+	\copypagestyle{listoffigures}{empty}
+	%\copypagestyle{listoftables}{plain}
+	% Julio:
+	\copypagestyle{listoftables}{empty}
+	\copypagestyle{bibliography}{headings}
+	% Julio: retirei os nomes de capitulos/se√ß√µes que apareciam na linha da p√°gina.
+	% \makeoddhead{bibliography}{\textsc{\bibname}}{}{\thepage}
+	\makeoddhead{bibliography}{}{}{\thepage}
+	
+	% Julio: para que a primeira p√°gina de cada cap√≠tulo tenha pagina√ß√£o no alto √† direita
+	%\makepagestyle{plain}
+	%\copypagestyle{chapter}{plain}
+	%\makepagestyle{chapter}
+%	\makeevenhead{chapter}{}{}{\thepage}
+%	\makeevenfoot{chapter}{}{}{}
+%	\makeoddhead{chapter}{}{}{\thepage}
+%	\makeoddfoot{chapter}{}{}{}
+	
+%	\makeoddhead{chapter}{}{}{}
+%	\makeoddfoot{chapter}{}{}{}
+	%\renewcommand{\clearforchapter}{}
+	
+%\fi
 
 \def\ppgcc@chaptermark#1{%
   \markboth{%
@@ -1185,7 +1279,7 @@
     \let\ppgcc@save@listoffigures=\listoffigures
     \let\listoffigures=\ppgcc@orig@listoffigures
     \pagestyle{listoffigures}
-    \listoffigures
+    \listoffigures*
     \clearpage
   \endgroup\fi
 }}
@@ -1198,7 +1292,7 @@
     \let\ppgcc@save@listoftables=\listoftables
     \let\listoftables=\ppgcc@orig@listoftables
     \pagestyle{listoftables}
-    \listoftables
+    \listoftables*
     \clearpage
   \endgroup\fi
 }}
@@ -1249,47 +1343,68 @@
 \define@key{ppgcc}{dedication}{\ppgcc@adddedication{#1}}
 \define@key{ppgcc}{ack}{\ppgcc@addack#1\relax}
 \define@key{ppgcc}{beforetoc}{\ppgcc@addbeforetoc{#1}}
+\define@key{ppgcc}{fcpage}{\fcpage{#1}}
 
-\fcpostkeywords{TÌtulo}
+\fcpostkeywords{T√≠tulo}
 
 \newcommand{\ppgccufmg}[1]{%
+  \copypagestyle{chapter}{plain}
+  \makeevenhead{chapter}{}{}{}
+  \makeevenfoot{chapter}{}{}{}
+  \makeoddhead{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{}
+	
   \setkeys{ppgcc}{#1}
 
-  \pagestyle{plain}
-
-  \frontmatter
+  \thispagestyle{empty}
+  \frontmatter*
 
   % Falsa folha de rosto
+  \thispagestyle{empty}
   \makecoverpage
+  %\cleardoublepage
+  \setcounter{page}{1}
+  
   % Folha(s) de rosto
   \maketitlepage
-  % Ficha Catalogr·fica
+  
+  % Ficha Catalogr√°fica
   \makefc
-  % Folha de aprovaÁ„o
+  % Folha de aprova√ß√£o
   \makeapproval
-  % DedicatÛria
+  % Dedicat√≥ria
   \ppgcc@includededicationlist
   % Agradecimentos
   \ppgcc@includeacklist
-  % EpÌgrafe
+  % Ep√≠grafe
   \makeepigraph
   % Resumo, Abstract, etc.
+  % Julio
   \ppgcc@includeabstractlist
 
-  % Sum·rio e lista de figuras e de tabelas
+  % Sum√°rio e lista de figuras e de tabelas
   \listoffigures
+  \pagestyle{empty}
   \listoftables
   \ppgcc@beforetoc
   \tableofcontents
 
-  % ***** ATEN«√O *****
+  % ***** ATEN√á√ÉO *****
   %
   % Se precisar incluir outras listas, como a Lista de Algoritmos ou de
-  % SÌmbolos, N√O ALTERE ESTE ARQUIVO PARA COLOCAR O COMANDO AQUI, sen„o o
-  % documento ser· gerado com problemas! Veja o exemplo da seÁ„o "Para os
+  % S√≠mbolos, N√ÉO ALTERE ESTE ARQUIVO PARA COLOCAR O COMANDO AQUI, sen√£o o
+  % documento ser√° gerado com problemas! Veja o exemplo da se√ß√£o "Para os
   % impacientes", que descreve esse caso.
 
   \ifppgcc@putmainmatter\mainmatter\fi
+  \pagestyle{chapter}
+  \copypagestyle{chapter}{plain}
+  \makeevenhead{plain}{}{}{\thepage}
+  \makeoddhead{plain}{}{}{\thepage}
+  \makeevenhead{chapter}{}{}{\thepage}
+  \makeoddhead{chapter}{}{}{\thepage}
+  \makeevenfoot{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{}
 }
 
 \def\ppgcc@bibauthorformat{}

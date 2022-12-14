@@ -1,89 +1,109 @@
-\documentclass[phd]{ppgccufmg}    % ou [msc] para dissertações
-                                  % de mestrado. Para propostas ou
-                                  % projetos, usar [phd,project],
-                                  % [msc,proposal], etc.
+\documentclass[phd,oneside]{ppgccufmg}  % ou [msc] para dissertaï¿½ï¿½es
+																		   % de mestrado. Para propostas ou
+																		   % projetos, usar [phd,project],
+																		   % [msc,proposal], etc.
 
-\usepackage[brazil]{babel}        % se o documento for em português, OU
-%\usepackage[english]{babel}      % se o documento for em inglês
-\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}							   % se o documento for em portuguÃªs, OU
+%\usepackage[english]{babel}					   % se o documento for em inglÃªs
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{type1ec}
 \usepackage{graphicx}
-\usepackage[a4paper,
-  portuguese,
-  bookmarks=true,
-  bookmarksnumbered=true,
-  linktocpage,
-  colorlinks,
-  citecolor=black,
-  urlcolor=black,
-  linkcolor=black,
-  filecolor=black,
-  ]{hyperref}
-\usepackage[square]{natbib}
 
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[a4paper,
+english,
+bookmarks=true,
+bookmarksnumbered=true,
+linktocpage,
+colorlinks,
+citecolor=black,
+urlcolor=black,
+linkcolor=black,
+filecolor=black,
+]{hyperref}
+
+\usepackage[square]{natbib}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{amsmath,amssymb}
+\usepackage{color}
+\usepackage[printonlyused,nohyperlinks]{acronym}
 
 \begin{document}
 
-% O comando a seguir, \ppgccufmg, provê todas as informações relevantes para a
-% classe ppgccufmg. Por favor, consulte a documentação para a descrição de
+% O comando a seguir, \ppgccufmg, provÃª todas as informaÃ§Ãµes relevantes para a
+% classe ppgccufmg. Por favor, consulte a documentaÃ§Ã£o para a descriÃ§Ã£o de
 % cada chave.
 
-% Um exemplo para documentos em português é apresentado a seguir:
+%% Um exemplo para documentos em portuguÃªs Ã© apresentado a seguir:
 \ppgccufmg{
-  title={Protocolo para Verificação de Erros\\em Redes Totalmente Confiáveis},
-  authorrev={da Camara Neto, Vilar Fiuza},
-  cutter={D1234p},
-  cdu={519.6*82.10},
-  university={Universidade Federal de Minas Gerais},
-  course={Ciência da Computação},
-  address={Belo Horizonte},
-  date={2008-03},
-  keywords={Visão Computacional, Redes, Sabotagens},
-  advisor=[male]{Adamastor Pompeu Setúbal},
-  coadvisor=[female]{Maria Teresa Eleonora},
-%  approval={img/approvalsheet.eps},
-%  approval=[-2.5cm][1]{aprovalsheet},
-  abstract={Resumo}{resumo},
-  abstract=[english]{Abstract}{abstract},
-  abstract={Resumo Estendido}{resumoest},
-  dedication={dedicatoria},
-  ack={agradecimentos},
-%  ack=[Acknowledgments]{ack},
-  epigraphtext={A verdade é o contrário da mentira, \\
-    e a mentira é o oposto da verdade.}{Autor desconhecido},
-  indexkeys={1.~Computação --- Teses. 2.~Redes --- Teses. I.~Orientador.
-    II.~Título.},
+	title={Protocolo para Verifica\c{c}\~ao o de Erros\\em Redes Totalmente Confi\'aveis},
+	authorrev={da Camara Neto, Vilar Fiuza},
+	cutter={},
+	cdu={},
+	university={Universidade Federal de Minas Gerais},
+	course={Computer Science},
+	portuguesetitle={Protocolo para Verificacao o de Erros\\em Redes Totalmente Confi\'aveis},
+	portugueseuniversity={Universidade Federal de Minas Gerais},
+	portuguesecourse={Ci\^encia da Computa\c{c}\~ao},
+	dedication={sections/0_0_dedication},
+	portugueseuniversity={Universidade Federal de Minas Gerais},
+	address={Belo Horizonte},
+	date={2022-06},
+	advisor=[male]{Douglas G. Macharet},
+	coadvisor=[male]{Mario F. M. Campos},
+	ack={sections/0_1_acknowledges},
+	abstract=[brazil]{Resumo}{sections/0_2_resumo},
+	abstract=[english]{Abstract}{sections/0_3_abstract},
+	epigraphtext={A verdade \'e o contr\'ario da mentira, \\ e a mentira \'e o oposto da verdade.}{Autor desconhecido},
+	beforetoc={
+		\input{sections/0_4_algorithm_list}
+		\input{sections/0_5_acronym_list}
+		\input{sections/0_6_symbol_list}
+	},
+	keywords={Robotics, Exploration, Confined spaces},
+	postkeywords={Robotics, Exploration, Confined spaces},
+	%approval={sections/FolhadeAprovacaoSEI_XXXX_page1.pdf},
+	%approval={sections/FolhadeAprovacaoSEI_XXXX_page2.pdf},
+	%fcpage={sections/ficha_catalografica_XXXX.pdf},
 }
 
-% Um exemplo para documentos em inglês é apresentado a seguir (lembre-se de
+% Um exemplo para documentos em inglÃªs Ã© apresentado a seguir (lembre-se de
 % usar \usepackage[english]{babel}):
 %\ppgccufmg{
-%  title={Protocol for Error-Verification inside\\Totally Error-Free
-%    Networks},
-%  authorrev={da Camara Neto, Vilar Fiuza},
-%  cutter={D1234p},
-%  cdu={519.6*82.10},
-%  university={Federal University of Minas Gerais},
-%  course={Computer Science},
-%  portuguesetitle={Protocolo para Verificação de Erros\\em Redes Totalmente
-%    Confiáveis},
-%  portugueseuniversity={Universidade Federal de Minas Gerais},
-%  portuguesecourse={Ciência da Computação},
-%  address={Belo Horizonte},
-%  date={2008-03},
-%  advisor={Adamastor Pompeu Setúbal},
-%  approval={img/approvalsheet.eps},
-%  abstract=[brazil]{Resumo}{resumo},
-%  abstract={Abstract}{abstract},
-%  dedication={dedicatoria},
-%  ack={agradecimentos},
-%  epigraphtext={Truth and lie are opposite things.}{Unknown},
+%	title={Verification protocol for totally reliable networks},
+%	authorrev={da Camara Neto, Vilar Fiuza},
+%	cutter={},
+%	cdu={},
+%	university={Universidade Federal de Minas Gerais},
+%	course={Computer Science},
+%	portuguesetitle={Protocolo para Verificacao o de Erros\\em Redes Totalmente Confi\'aveis},
+%	portugueseuniversity={Universidade Federal de Minas Gerais},
+%	portuguesecourse={Ci\^encia da Computa\c{c}\~ao},
+%	dedication={sections/0_0_dedication},
+%	portugueseuniversity={Universidade Federal de Minas Gerais},
+%	address={Belo Horizonte},
+%	date={2022-06},
+%	advisor=[male]{Adamastor Pompeu SetÃºbal},
+%	coadvisor=[female]{Maria Perez},
+%	ack={sections/0_1_acknowledges},
+%	abstract=[brazil]{Resumo}{sections/0_2_resumo},
+%	abstract=[english]{Abstract}{sections/0_3_abstract},
+%	epigraphtext={You should update this text.}{Unknown author},
+%	beforetoc={
+%		\input{sections/0_4_algorithm_list}
+%		\input{sections/0_5_acronym_list}
+%		\input{sections/0_6_symbol_list}
+%	},
+%	keywords={Robotics, Exploration, Confined spaces},
+%	postkeywords={Robotics, Exploration, Confined spaces},
+%	%approval={sections/FolhadeAprovacaoSEI_XXXX_page1.pdf},
+%	%approval={sections/FolhadeAprovacaoSEI_XXXX_page2.pdf},
+%	%fcpage={sections/ficha_catalografica_XXXX.pdf},
 %}
 
-
-% Os três comandos seguintes são apenas para gerar texto para ocupar espaço nas
-% páginas.
+% Os trÃªs comandos seguintes sÃ£o apenas para gerar texto para ocupar espaÃ§o nas
+% pÃ¡ginas.
 \newcommand{\dummytxta}{%
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -126,39 +146,40 @@ asperiores repellat.\par
 
 \newcommand{\dummytxt}{\dummytxta\dummytxtb\dummytxtc}
 
-\chapter{Introdução}
+\chapter{IntroduÃ§Ã£o}
 
-Segundo \cite{horn86robot}, todo triângulo equilátero tem os lados iguais. Já
-segundo \cite{shashua97photometric}, todo quadrado também tem.
+Segundo \cite{horn86robot}, todo triÃ¢ngulo equilÃ¡tero tem os lados iguais. JÃ¡
+segundo \cite{shashua97photometric}, todo quadrado tambÃ©m tem.
 
-Veja que o pacote \verb|natbib| permite uma série de formas diferentes para
-fazer referências bibliográficas. O comando padrão, \verb|\cite|, realiza a
-citação comum vista no parágrafo anterior. Outros comandos permitem, por
+Veja que o pacote \verb|natbib| permite uma sÃ©rie de formas diferentes para
+fazer referÃªncias bibliogrÃ¡ficas. O comando padrÃ£o, \verb|\cite|, realiza a
+citaÃ§Ã£o comum vista no parÃ¡grafo anterior. Outros comandos permitem, por
 exemplo, citar somente o autor --- por exemplo, citar o trabalho de
-\citeauthor{samaras99coupled} --- ou colocar automaticamente a citação entre
-parênteses \citep{hougen93estimation, sato99illumination2, sato99illumination1,
+\citeauthor{samaras99coupled} --- ou colocar automaticamente a citaÃ§Ã£o entre
+parÃªnteses \citep{hougen93estimation, sato99illumination2, sato99illumination1,
 sato01stability}. Os comandos usados foram, respectivamente, \verb|\citeauthor|
-e \verb|\citep|. Veja a documentação do \verb|natbib| na Internet para conhecer
+e \verb|\citep|. Veja a documentaÃ§Ã£o do \verb|natbib| na Internet para conhecer
 outros comandos e exemplos de uso.
 
-Citações aleatórias para fazer com que as referências bibliográficas ocupem
-mais de uma página: \cite{bichsel92simple, dror01statistics, guisser92new}.
+CitaÃ§Ãµes aleatÃ³rias para fazer com que as referÃªncias bibliogrÃ¡ficas ocupem
+mais de uma pÃ¡gina: \cite{bichsel92simple, dror01statistics, guisser92new}.
 
+Para adicionar um acrÃ´nimo usar \verb|\ac{}| com o identificador do acrÃ´nimo: \ac{LeGO-LOAM}.
 
-\section{Motivação}
+\section{MotivaÃ§Ã£o}
 
 \dummytxtb\dummytxta
 
-\subsection{Sub-motivação}
+\subsection{Sub-motivaÃ§Ã£o}
 
 
 \dummytxtc\dummytxtb
 
-\subsection{Mais uma sub-seção}
+\subsection{Mais uma sub-seÃ§Ã£o}
 
 \dummytxta\dummytxtc
 
-\subsubsection{Descendo mais um nível}
+\subsubsection{Descendo mais um nÃ­vel}
 
 \dummytxtb\dummytxta
 
@@ -189,18 +210,33 @@ mais de uma página: \cite{bichsel92simple, dror01statistics, guisser92new}.
 \end{table}
 
 
+\begin{algorithm}
+	$i\gets 10$\;
+	\eIf{$i\geq 5$}
+	{
+		$i\gets i-1$\;
+	}{
+		\If{$i\leq 3$}
+		{
+			$i\gets i+2$\;
+		}
+	}
+	\caption{VerificaÃ§Ã£o quÃ¡ntica}
+	\label{alg:frontier}
+\end{algorithm}
+
 % Aqui vem a parte da bibliografia: use o comando \ppgccbibliography indicando
-% apenas o nome do arquivo .bib (sem a extensão).
+% apenas o nome do arquivo .bib (sem a extensÃ£o).
 \ppgccbibliography{bibfile}
 
 
-% Este comando encapsula o conjunto de apêndices. A sua função é fazer com que
-% a numeração dos apêndices seja feita com letras maiúsculas (A, B, C, etc.) e
-% a palavra "Apêndice" anteceda as entradas no Sumário.
+% Este comando encapsula o conjunto de apÃªndices. A sua funÃ§Ã£o Ã© fazer com que
+% a numeraÃ§Ã£o dos apÃªndices seja feita com letras maiÃºsculas (A, B, C, etc.) e
+% a palavra "ApÃªndice" anteceda as entradas no SumÃ¡rio.
 \begin{appendices}
 
-% Para cada apêndice, um \chapter
-\chapter{Um apêndice}
+% Para cada apÃªndice, um \chapter
+\chapter{Um apÃªndice}
 
 \dummytxta
 \dummytxtb
@@ -208,7 +244,7 @@ mais de uma página: \cite{bichsel92simple, dror01statistics, guisser92new}.
 \dummytxta
 \dummytxtb
 
-\chapter{Outro apêndice}
+\chapter{Outro apÃªndice}
 
 \dummytxta
 \dummytxtb
@@ -216,13 +252,13 @@ mais de uma página: \cite{bichsel92simple, dror01statistics, guisser92new}.
 \dummytxta
 \dummytxtb
 
-% Fim dos apêndices (usar apenas depois do último apêndice)
+% Fim dos apÃªndices (usar apenas depois do Ãºltimo apÃªndice)
 \end{appendices}
 
 
-% Este comando encapsula o conjunto de anexos. A sua função é fazer com que a
-% numeração dos anexos seja feita com letras maiúsculas (A, B, C, etc.) e a
-% palavra "Anexo" anteceda as entradas no Sumário.
+% Este comando encapsula o conjunto de anexos. A sua funÃ§Ã£o Ã© fazer com que a
+% numeraÃ§Ã£o dos anexos seja feita com letras maiÃºsculas (A, B, C, etc.) e a
+% palavra "Anexo" anteceda as entradas no SumÃ¡rio.
 \begin{attachments}
 
 % Para cada anexo, um \chapter
@@ -239,7 +275,7 @@ mais de uma página: \cite{bichsel92simple, dror01statistics, guisser92new}.
 \dummytxta
 \dummytxtb
 
-% Fim dos anexos (usar apenas depois do último anexo)
+% Fim dos anexos (usar apenas depois do Ãºltimo anexo)
 \end{attachments}
 
 
